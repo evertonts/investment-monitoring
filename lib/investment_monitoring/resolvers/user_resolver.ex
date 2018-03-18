@@ -8,7 +8,10 @@ defmodule InvestmentMonitoring.UserResolver do
   end
 
   def create_user(_root, args, _info) do
-    changeset = User.changeset(%User{}, args)
-    {:ok, user} = Repo.insert(changeset)
+    changeset = User.registration_changeset(%User{}, args)
+    case Repo.insert(changeset) do
+      {:ok, user} -> {:ok, user}
+      {:error, reason} -> {:error, reason}
+    end
   end
 end

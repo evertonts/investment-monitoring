@@ -20,7 +20,7 @@ defmodule InvestmentMonitoring.Mixfile do
   def application do
     [
       mod: {InvestmentMonitoring, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger, :comeonin]
     ]
   end
 
@@ -42,7 +42,11 @@ defmodule InvestmentMonitoring.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:absinthe_ecto, "~> 0.1.0"},
-      {:absinthe_plug, "~> 1.3.0"}
+      {:absinthe_plug, "~> 1.3.0"},
+      {:guardian, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 0.12"},
+      {:httpoison, "~> 1.0"}
     ]
   end
 

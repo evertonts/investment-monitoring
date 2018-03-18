@@ -16,6 +16,20 @@ defmodule InvestmentMonitoring.Router do
     get "/users/:id", UserController, :show
   end
 
+  # pipeline :graphql do
+  #   plug Plug.Parsers,
+  #     parsers: [:urlencoded, :multipart, :json],
+  #     pass: ["*/*"],
+  #     json_decoder: Poison
+  #   plug InvestmentMonitoring.Context
+  # end
+
+  # scope "/graphql" do
+  #   pipe_through :graphql
+
+  #   forward "/", Absinthe.Plug, schema: InvestmentMonitoring.Schema
+  # end
+
   scope "/", InvestmentMonitoring do
     pipe_through :browser # Use the default browser stack
 
