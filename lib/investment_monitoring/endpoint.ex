@@ -38,5 +38,8 @@ defmodule InvestmentMonitoring.Endpoint do
     key: "_investment_monitoring_key",
     signing_salt: "9mfazer0"
 
+  plug Absinthe.Plug,
+    schema: InvestmentMonitoring.Schema
+
   plug InvestmentMonitoring.Router
 end
