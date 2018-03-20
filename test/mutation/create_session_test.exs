@@ -1,4 +1,4 @@
-defmodule InvestmentMonitoring.SessionResolverTest do
+defmodule InvestmentMonitoring.CreateSessionTest do
   use InvestmentMonitoring.ConnCase
   use Phoenix.ConnTest
   alias InvestmentMonitoring.User
@@ -10,8 +10,8 @@ defmodule InvestmentMonitoring.SessionResolverTest do
     :ok
   end
 
-  describe "Session Resolver" do
-    test "create_session/3 returns a token" do
+  describe "Create a session" do
+    test "returns a token" do
       query = """
       mutation {
         createSession(password: "123456", username: "test") {

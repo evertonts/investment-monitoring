@@ -1,9 +1,9 @@
-defmodule InvestmentMonitoring.UserResolverTest do
+defmodule InvestmentMonitoring.CreateUserTest do
   use InvestmentMonitoring.ConnCase
   use Phoenix.ConnTest
 
-  describe "User Resolver" do
-    test "create_user/3 returns a user" do
+  describe "Create User" do
+    test "returns a user" do
       query = """
       mutation {
         createUser(password: "123456", username: "test", name: "Test") {
