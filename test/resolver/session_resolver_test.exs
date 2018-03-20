@@ -1,10 +1,7 @@
-require IEx
-
 defmodule InvestmentMonitoring.SessionResolverTest do
   use InvestmentMonitoring.ConnCase
   use Phoenix.ConnTest
   alias InvestmentMonitoring.User
-  alias InvestmentMonitoring.AbsintheHelpers
   alias InvestmentMonitoring.Repo
 
   setup do
@@ -14,7 +11,7 @@ defmodule InvestmentMonitoring.SessionResolverTest do
   end
 
   describe "Session Resolver" do
-    test "create_session/2 returns a token" do
+    test "create_session/3 returns a token" do
       query = """
       mutation {
         createSession(password: "123456", username: "test") {

@@ -1,10 +1,9 @@
+require IEx
+
 defmodule InvestmentMonitoring.Context do
   @behaviour Plug
 
   import Plug.Conn
-  import Ecto.Query, only: [where: 2]
-
-  alias InvestmentMonitoring.{Repo, User}
 
   def init(opts), do: opts
 
@@ -26,16 +25,15 @@ defmodule InvestmentMonitoring.Context do
   end
 
   defp authorize(token) do
-    case Guardian.decode_and_verify(token) do
+    case InvestmentMonitoring.Guardian.decode_and_verify(token, %{"typ" => "access"}) do
       {:ok, claims} -> return_user(claims)
       {:error, reason} -> {:error, reason}
     end
   end
 
   defp return_user(claims) do
-    case Guardian.serializer.from_token(Map.get(claims, "sub")) do
+    case InvestmentMonitoring.Guardian.resource_from_claims(claims) do
       {:ok, resource} -> {:ok, resource}
-      {:error, reason} -> {:error, reason}
     end
   end
 end

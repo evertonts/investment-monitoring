@@ -1,8 +1,11 @@
+require IEx
 defmodule InvestmentMonitoring.Schema do
   use Absinthe.Schema
 
   alias InvestmentMonitoring.UserResolver
   alias InvestmentMonitoring.SessionResolver
+  alias InvestmentMonitoring.Repo
+  alias InvestmentMonitoring.User
 
   object :user do
     field :id, non_null(:id)
@@ -18,6 +21,15 @@ defmodule InvestmentMonitoring.Schema do
   query do
     field(:all_users, non_null(list_of(non_null(:user)))) do
       resolve &UserResolver.all_users/3
+    end
+
+    field :me, :user do
+      resolve fn _, %{context: context} ->
+        case context.current_user do
+          %User{id: id} -> {:ok, Repo.get(User, id)}
+          _ -> {:error}
+        end
+      end
     end
   end
 

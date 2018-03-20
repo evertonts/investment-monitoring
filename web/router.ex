@@ -22,7 +22,10 @@ defmodule InvestmentMonitoring.Router do
   end
 
   scope "/" do
-    pipe_through :graphql
+    pipe_through :api
+
+    forward "/graphql", Absinthe.Plug,
+      schema: InvestmentMonitoring.Schema
 
     forward "/graphiql", Absinthe.Plug.GraphiQL,
       schema: InvestmentMonitoring.Schema,
