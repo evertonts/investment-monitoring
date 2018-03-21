@@ -40,7 +40,5 @@ defmodule InvestmentMonitoring.Endpoint do
 
   plug InvestmentMonitoring.Context
 
-  plug Absinthe.Plug.GraphiQL,
-    schema: InvestmentMonitoring.Schema,
-    interface: :advanced
+  plug InvestmentMonitoring.Router
 end
