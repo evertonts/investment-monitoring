@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import LoginForm from './components/login-form'
+import SignUpForm from './components/signup-form'
 import {ApolloProvider} from 'react-apollo'
 import {ApolloClient} from 'apollo-client'
 import {HttpLink} from 'apollo-link-http'
@@ -11,5 +11,5 @@ const client = new ApolloClient({link: httpLink, cache: new InMemoryCache()})
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-  <LoginForm />
+    <SignUpForm />
   </ApolloProvider>, document.getElementById('hello-world'))

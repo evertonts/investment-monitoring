@@ -2,7 +2,7 @@ import React from "react"
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
 
-class LoginForm extends React.Component {
+class SignUpForm extends React.Component {
 
   constructor(props) {
     super(props);
