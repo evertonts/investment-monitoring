@@ -9,7 +9,13 @@ import {InMemoryCache} from 'apollo-cache-inmemory'
 const httpLink = new HttpLink()
 const client = new ApolloClient({link: httpLink, cache: new InMemoryCache()})
 
+class App extends React.Component {
+  render() {
+    return (<SignUpForm/>)
+  }
+}
+
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <SignUpForm />
-  </ApolloProvider>, document.getElementById('hello-world'))
+    <App />
+  </ApolloProvider>, document.getElementById('container'))

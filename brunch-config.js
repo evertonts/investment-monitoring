@@ -55,6 +55,12 @@ exports.config = {
       presets: ["es2015", "react"],
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
+    },
+    sass: {
+      options: {
+        includePaths: ["node_modules/bootstrap/scss"], // Tell sass-brunch where to look for files to @import
+        precision: 8 // Minimum precision required by bootstrap-sass
+      }
     }
   },
 
