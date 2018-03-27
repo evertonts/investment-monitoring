@@ -1,9 +1,8 @@
 import React from "react"
 import {graphql} from 'react-apollo'
-import gql from 'graphql-tag'
+import mutation from '../graphql/mutations/create-user'
 
 class SignUpForm extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -74,14 +73,4 @@ class SignUpForm extends React.Component {
   }
 }
 
-const query = gql `
-  mutation createUser($username: String!, $password: String!, $name: String!) {
-    createUser(username: $username, password: $password, name: $name) {
-      id
-      name
-      username
-    }
-  }
-`;
-
-export default graphql(query)(LoginForm);
+export default graphql(mutation)(SignUpForm);
