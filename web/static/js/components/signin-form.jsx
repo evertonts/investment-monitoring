@@ -1,6 +1,6 @@
 import React from "react"
 import {graphql} from 'react-apollo'
-import mutation from '../graphql/mutations/create-user'
+import mutation from '../graphql/mutations/create-session'
 
 class SignInForm extends React.Component {
   constructor(props) {
@@ -28,15 +28,18 @@ class SignInForm extends React.Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
+    self = this;
 
-    this
-      .props
-      .mutate({variables: this.state})
+    this.props.mutate({variables: this.state})
       .then(({data}) => {
-        console.log('got data', data);
+        console.log('data', data)
+        localStorage.setItem('token', data.createSession.token);
+        self.props.history.push('/dashboard')
       })
       .catch((error) => {
-        console.log('error', error);
+        console.log('error', error)
+
+        window.flashMessage.addMessage('username or password inválid', 'info')
       });
   }
 
@@ -44,6 +47,16 @@ class SignInForm extends React.Component {
     return (
       <div>
         <h1>Login</h1>
+
+        <form onSubmit={this.handleOnSubmit}>
+          <label>Username</label>
+          <input type="text" name="username" onChange={this.handleInputChange}/>
+          <br />
+          <label>Password</label>
+          <input type="password" name="password" onChange={this.handleInputChange}/>
+
+          <input type="submit" value="Submit"/>
+        </form>
       </div>
     )
   }

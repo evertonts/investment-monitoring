@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql `
-  mutation createsession($username: String!, $password: String!) {
-    createUser(username: $username, password: $password) {
+  mutation createSession($username: String!, $password: String!) {
+    createSession(username: $username, password: $password) {
       token
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
-import signupForm from './signup-form';
+import {Link} from 'react-router-dom'
+import FlashMessage from './flash-message'
 
 export default class Header extends React.Component {
   render() {
@@ -11,6 +11,7 @@ export default class Header extends React.Component {
           <li><Link to="/signin">Login</Link></li>
           <li><Link to="/signup">Signup</Link></li>
         </ul>
+        <FlashMessage/>
       </div>
     );
   }

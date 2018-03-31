@@ -29,12 +29,13 @@ class SignUpForm extends React.Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
-
+    const that = this;
     this.props.mutate({
       variables: this.state
     })
     .then(({data}) => {
-      console.log('got data', data);
+      window.flashMessage.addMessage('Signup successfully', 'info')
+      that.props.history.push('/signin')
     }).catch((error) => {
       console.log('error', error);
     });
