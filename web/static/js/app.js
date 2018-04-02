@@ -41,10 +41,10 @@ class App extends React.Component {
       <BrowserRouter >
         <div>
           <Header />
-          <Route exact path="/" component={Dashboard}/>
+          <PrivateRoute exact path="/" component={Dashboard}/>
           <Route path="/signup" component={SignUpForm}/>
           <Route path="/signin" component={SignInForm}/>
-          <PrivateRoute path="/dashboard" component={Dashboard}/>
+          <Route exact path="/dashboard" component={Dashboard}/>
         </div>
       </BrowserRouter>
     )
