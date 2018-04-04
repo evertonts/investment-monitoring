@@ -4,6 +4,7 @@ defmodule InvestmentMonitoring.Schema do
 
   alias InvestmentMonitoring.UserResolver
   alias InvestmentMonitoring.SessionResolver
+  alias InvestmentMonitoring.InvestmentResolver
   alias InvestmentMonitoring.Repo
   alias InvestmentMonitoring.User
 
@@ -16,6 +17,12 @@ defmodule InvestmentMonitoring.Schema do
   @desc "A JWT Token"
   object :token do
     field :token, :string
+  end
+
+  object :investment do
+    field :id, non_null(:id)
+    field :user_id, :id
+    field :broker, non_null(:string)
   end
 
   query do
@@ -46,6 +53,12 @@ defmodule InvestmentMonitoring.Schema do
       arg :password, non_null(:string)
 
       resolve &SessionResolver.create_session/3
+    end
+
+    field :create_investment, :investment do
+      arg :broker, non_null(:string)
+
+      resolve &InvestmentResolver.create_investment/3
     end
   end
 end
