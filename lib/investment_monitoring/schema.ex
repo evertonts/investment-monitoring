@@ -24,6 +24,11 @@ defmodule InvestmentMonitoring.Schema do
     field :id, non_null(:id)
     field :user_id, :id
     field :broker, non_null(:string)
+    field :title, non_null(:string)
+    field :start_date, non_null(:string)
+    field :end_date, non_null(:string)
+    field :reference_rate, non_null(:string)
+    field :amount, non_null(:integer)
   end
 
   query do
@@ -58,6 +63,11 @@ defmodule InvestmentMonitoring.Schema do
 
     field :create_investment, :investment do
       arg :broker, non_null(:string)
+      arg :title, non_null(:string)
+      arg :amount, non_null(:integer)
+      arg :start_date, non_null(:string)
+      arg :end_date, non_null(:string)
+      arg :reference_rate, non_null(:string)
 
       resolve &InvestmentResolver.create_investment/3
     end
