@@ -23,7 +23,7 @@ defmodule InvestmentMonitoring.CreateInvestmentTest do
       |> put_req_header("authorization", "Bearer #{token}")
       |> post("/graphql", query)
 
-      assert json_response(conn, 200)["data"] != nil
+      assert json_response(conn, 200)["data"]["createInvestment"]["id"] != nil
     end
   end
 end
