@@ -12,7 +12,10 @@ defmodule InvestmentMonitoring.CreateInvestmentTest do
 
       query = """
         mutation {
-          createInvestment(broker: "test") {
+          createInvestment(broker: "test", title: "First investment",
+            amount: 100, start_date: "2018-01-01", end_date: "2018-12-01",
+            reference_rate: "CDI"
+          ) {
             id
           }
         }
@@ -23,7 +26,7 @@ defmodule InvestmentMonitoring.CreateInvestmentTest do
       |> put_req_header("authorization", "Bearer #{token}")
       |> post("/graphql", query)
 
-      assert json_response(conn, 200)["data"] != nil
+      assert json_response(conn, 200)["data"]["createInvestment"]["id"] != nil
     end
   end
 end

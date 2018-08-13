@@ -4,15 +4,20 @@ defmodule InvestmentMonitoring.Investment do
 
   schema "investments" do
     field :broker, :string
+    field :title, :string
+    field :amount, :integer
+    field :start_date, :date
+    field :end_date, :date
+    field :reference_rate, :string
+
     belongs_to :user, InvestmentMonitoring.User
-    has_many :contributions, InvestmentMonitoring.Contribution
     timestamps()
   end
 
   @doc false
   def changeset(investment, attrs) do
     investment
-    |> cast(attrs, [:broker])
+    |> cast(attrs, ~w(broker title amount start_date end_date reference_rate))
     |> validate_required([:broker])
   end
 end
