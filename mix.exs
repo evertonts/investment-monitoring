@@ -48,7 +48,7 @@ defmodule InvestmentMonitoring.Mixfile do
       {:bcrypt_elixir, "~> 0.12"},
       {:httpoison, "~> 1.0"},
       {:money, "~> 1.2.1"},
-      {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false}
     ]
   end
 
